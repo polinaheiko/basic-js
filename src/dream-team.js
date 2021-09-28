@@ -15,6 +15,11 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default function createDreamTeam(members) {
   let team = ''
-  members.forEach(el => (typeof el === 'string' || el instanceof String) ? team += el.trim().substr(0,1) : false)
-  return team.toUpperCase().split('').sort().join('');
+  if (Array.isArray(members)) {
+    members.map(el => (typeof el === 'string' || el instanceof String) ? team += el.trim().substr(0,1) : false)
+    return team.toUpperCase().split('').sort().join('');
+  }
+  
+  return false
+  
 }
